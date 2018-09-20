@@ -11,43 +11,32 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
+            CaulcularBonificacao();
+            Console.ReadLine();
+        }
+
+        public static void CaulcularBonificacao()
+        {
             GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
 
-            Funcionario funcionario = new Funcionario(2000,"CPF do funcionario");
+            Designer designer = new Designer("833.22.048-39");
+            designer.Nome = "Pedro";
 
-            funcionario.Nome = "Nome do funcionario";
+            Diretor diretor = new Diretor("159.753.398-04");
+            diretor.Nome = "Roberta";
 
-            funcionario.AumentarSalario();
-            Console.WriteLine("Novo salário do funcionário: "+ funcionario.Salario);
+            Auxiliar auxiliar = new Auxiliar("981.198.778-53");
+            auxiliar.Nome = "Igor";
 
-            Console.WriteLine(Funcionario.TotalDeFuncionarios);
+            GerenteDeConta gerenteDeConta = new GerenteDeConta("326.985.628-89");
+            gerenteDeConta.Nome = "Camila";
 
-            gerenciador.Registrar(funcionario);
-
-            Console.WriteLine(funcionario.Nome);
-            Console.WriteLine(funcionario.GetBonificacao());
-
-            Diretor diretor = new Diretor("CPF do diretor");
-            diretor.Nome = "Nome do diretor";
-            Console.WriteLine(diretor.CPF);
-            Console.WriteLine(Funcionario.TotalDeFuncionarios);
-
-            Funcionario funcionarioDiretor = diretor;
-
-            diretor.AumentarSalario();
-            Console.WriteLine("Novo salário de diretor: " + diretor.Salario);
-
-            Console.WriteLine("Bonificação de uma referência de Diretor: " + diretor.GetBonificacao());
-            Console.WriteLine("Bonificação de uma referência de Funcionario: " + funcionarioDiretor.GetBonificacao());
-
+            gerenciador.Registrar(designer);
             gerenciador.Registrar(diretor);
+            gerenciador.Registrar(auxiliar);
+            gerenciador.Registrar(gerenteDeConta);
 
-            Console.WriteLine(diretor.Nome);
-            Console.WriteLine(diretor.GetBonificacao());
-
-            Console.WriteLine("Total de bonificações: " + gerenciador.GetTotalBonificacao());
-
-            Console.ReadLine();
+            Console.WriteLine("Total de bonificações do mês: " + gerenciador.GetTotalBonificacao());
         }
     }
 }
